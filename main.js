@@ -33,12 +33,14 @@ async function fetchWeather() {
   const url =
       "https://api.open-meteo.com/v1/forecast?" +
       "forecast_days=2&latitude=43.70&longitude=-79.42" +
-      "&hourly=temperature_2m,apparent_temperature,precipitation,precipitation_probability,relative_humidity_2m,windspeed_10m,cloudcover,uv_index" +
-      "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset" +
+      "&hourly=temperature_2m,apparent_temperature,precipitation,precipitation_probability,relative_humidity_2m,windspeed_10m,cloudcover,uv_index,weather_code" +
+      "&daily=temperature_2m_max,temperature_2m_min,sunrise" +
       "&timezone=America%2FNew_York";
 
   const response = await fetch(url);
-  return await response.json();
+  const resp = await response.json();
+  console.log(resp);
+  return resp;
 }
 
 function splitByDay(hourly) {
@@ -57,6 +59,7 @@ function splitByDay(hourly) {
       precipitationProb: hourly.precipitation_probability[i],
       wind: hourly.windspeed_10m[i],
       humidity: hourly.relative_humidity_2m[i],
+      weatherCode: hourly['weather_code'][i],
     });
   }
   return { today, tomorrow };
@@ -69,6 +72,126 @@ function fillWeatherTable(id, data) {
     let blockerExists = false;
     const row = document.createElement("tr");
 
+    function getWeatherState(weatherCode) {
+      if (weatherCode === 0) {
+        return '☀️'
+      }
+
+      if (weatherCode === 1) {
+        return '☀️'
+      }
+
+      if (weatherCode === 2) {
+        return '⛅'
+      }
+
+      if (weatherCode === 3) {
+        return '☁️'
+      }
+
+      if (weatherCode === 45 || weatherCode === 48) {
+        return '🌁'
+      }
+
+      if (weatherCode === 51) {
+        return '🌦️'
+      }
+
+      if (weatherCode === 53) {
+        return '🌦️🌦️'
+      }
+
+      if (weatherCode === 55) {
+        return '🌦️🌦️🌦️'
+      }
+
+      if (weatherCode === 56) {
+        return '🌦️'
+      }
+
+      if (weatherCode === 56) {
+        return '🌦️🌦️🌦️'
+      }
+
+      if (weatherCode === 61) {
+        return '🌧️'
+      }
+
+      if (weatherCode === 63) {
+        return '🌧️🌧️'
+      }
+
+      if (weatherCode === 65) {
+        return '🌧️🌧️🌧️'
+      }
+
+      if (weatherCode === 66) {
+        return '🌧️'
+      }
+
+      if (weatherCode === 67) {
+        return '🌧️🌧️🌧️'
+      }
+
+      if (weatherCode === 71) {
+        return '🌨️'
+      }
+
+      if (weatherCode === 73) {
+        return '🌨️🌨️'
+      }
+
+      if (weatherCode === 75) {
+        return '🌨️🌨️🌨️'
+      }
+
+      if (weatherCode === 77) {
+        return '🌨️'
+      }
+
+      if (weatherCode === 80) {
+        return '🌧️'
+      }
+
+      if (weatherCode === 81) {
+        return '🌧️🌧️'
+      }
+
+      if (weatherCode === 80) {
+        return '🌧️🌧️🌧️'
+      }
+
+      if (weatherCode === 85) {
+        return '🌨'
+      }
+
+      if (weatherCode === 86) {
+        return '🌨🌨🌨'
+      }
+
+      if (weatherCode === 95) {
+        return '🌪️'
+      }
+
+      // WMO Weather interpretation codes (WW)
+      // Code	Description
+      // 0	Clear sky
+      // 1, 2, 3	Mainly clear, partly cloudy, and overcast
+      // 45, 48	Fog and depositing rime fog
+      // 51, 53, 55	Drizzle: Light, moderate, and dense intensity
+      // 56, 57	Freezing Drizzle: Light and dense intensity
+      // 61, 63, 65	Rain: Slight, moderate and heavy intensity
+      // 66, 67	Freezing Rain: Light and heavy intensity
+      // 71, 73, 75	Snow fall: Slight, moderate, and heavy intensity
+      // 77	Snow grains
+      // 80, 81, 82	Rain showers: Slight, moderate, and violent
+      // 85, 86	Snow showers slight and heavy
+      // 95 *	Thunderstorm: Slight or moderate
+      // 96, 99 *	Thunderstorm with slight and heavy hail
+
+      return weatherCode;
+    }
+
     function makeCell(value, className) {
       const td = document.createElement("td");
       td.textContent = value;
@@ -78,11 +201,10 @@ function fillWeatherTable(id, data) {
     }
 
     row.appendChild(makeCell(rowData.hours));
-    row.appendChild(makeCell(`${rowData.temp}°`, classify(rowData.temp, THRESHOLDS.temp)));
     row.appendChild(makeCell(`${rowData.feelsLike}°`, classify(rowData.feelsLike, THRESHOLDS.feelsLike)));
     row.appendChild(makeCell(`${rowData.precipitationProb}%`, classify(rowData.precipitationProb, THRESHOLDS.precipitationProb)));
     row.appendChild(makeCell(`${rowData.wind}`, classify(rowData.wind, THRESHOLDS.wind)));
-    row.appendChild(makeCell(`${rowData.humidity}%`, classify(rowData.humidity, THRESHOLDS.humidity)));
+    row.appendChild(makeCell(getWeatherState(rowData.weatherCode)));
 
     if (blockerExists) row.classList.add("blocker-row");
     tableBody.appendChild(row);
@@ -275,7 +397,7 @@ function getCurrentDay() {
 // Initial render + tick (your original interval behavior)
 refreshUi();
 setInterval(() => {
-  if (new Date().getSeconds() === 0) {
+  if (new Date().getSeconds() === 0 || new Date().getSeconds() === 30) {
     refreshUi();
   }
-}, 1000);
+}, 250);
