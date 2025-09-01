@@ -7,37 +7,36 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div id="currentTime"></div>
 
 <main>
   <!-- Bus Section -->
   <section id="bus-section">
-    <h2>🚍 Bus Schedule</h2>
-
     <div id="north-bound-container">
-      <h3>Northbound - St Clair</h3>
+      <h2>Northbound</h2>
+      <h3>St Clair</h3>
       <div id="nb-stClairStationAtLowerPlatform-nextbus"></div>
       <table><tbody id="nb-stClairStationAtLowerPlatform-schedule"></tbody></table>
 
-      <h3>Northbound - Eglington</h3>
+      <h3>Eglington</h3>
       <div id="nb-mtPleasantRdAtEglintonAveEastNorthSide-nextbus"></div>
       <table><tbody id="nb-mtPleasantRdAtEglintonAveEastNorthSide-schedule"></tbody></table>
 
-      <h3>Northbound - Home</h3>
+      <h3>Home</h3>
       <div id="nb-mtPleasantRdatBlythwoodRd-nextbus"></div>
       <table><tbody id="nb-mtPleasantRdatBlythwoodRd-schedule"></tbody></table>
     </div>
 
     <div id="south-bound-container">
-      <h3>Southbound - Doncliffe Loop</h3>
+      <h2>Southbound</h2>
+      <h3>Doncliffe Loop</h3>
       <div id="sb-doncliffeLoopAtGlenEchoRd-nextbus"></div>
       <table><tbody id="sb-doncliffeLoopAtGlenEchoRd-schedule"></tbody></table>
 
-      <h3>Southbound - Lawrence Ave</h3>
+      <h3>Lawrence Ave</h3>
       <div id="sb-mtPleasantRdAtLawrenceAveEastSouthSide-nextbus"></div>
       <table><tbody id="sb-mtPleasantRdAtLawrenceAveEastSouthSide-schedule"></tbody></table>
 
-      <h3>Southbound - Home</h3>
+      <h3>Home</h3>
       <div id="sb-mtPleasantRdAtStibbardAve-nextbus"></div>
       <table><tbody id="sb-mtPleasantRdAtStibbardAve-schedule"></tbody></table>
     </div>
@@ -45,9 +44,9 @@
 
   <!-- Weather Section -->
   <section id="weather-section">
-    <h2>☀️ Weather</h2>
+    <div id="currentTime" style="float: right; margin-top: 10px; margin-right: 10px"></div>
 
-    <h3>Today</h3>
+    <h2>Today</h2>
     <table>
       <thead>
       <tr>
@@ -61,7 +60,7 @@
       <tbody id="today"></tbody>
     </table>
 
-    <h3>Tomorrow</h3>
+    <h2>Tomorrow</h2>
     <table>
       <thead>
       <tr>

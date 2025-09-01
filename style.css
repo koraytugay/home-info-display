@@ -13,7 +13,7 @@ body {
 }
 h2 {
   margin: 10px 0 8px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #f5c518;
 }
 h3 {
@@ -49,7 +49,6 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 14px;
-  font-size: 0.95rem;
 }
 thead th {
   background: #1d2130;
@@ -82,6 +81,10 @@ td.blocker { color: #f44336; font-weight: 600; }
 #bus-section td.next {
   color: #81c784;
   font-weight: 700;
+}
+
+.weatherCode {
+  font-size: 2rem;
 }
 
 /* Responsive: stack on portrait iPad */

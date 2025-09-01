@@ -3,7 +3,7 @@
    ========================= */
 function updateClock() {
   document.getElementById("currentTime").textContent =
-      new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" });
+      new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: false});
 }
 setInterval(updateClock, 1000);
 updateClock();
@@ -204,7 +204,7 @@ function fillWeatherTable(id, data) {
     row.appendChild(makeCell(`${rowData.feelsLike}°`, classify(rowData.feelsLike, THRESHOLDS.feelsLike)));
     row.appendChild(makeCell(`${rowData.precipitationProb}%`, classify(rowData.precipitationProb, THRESHOLDS.precipitationProb)));
     row.appendChild(makeCell(`${rowData.wind}`, classify(rowData.wind, THRESHOLDS.wind)));
-    row.appendChild(makeCell(getWeatherState(rowData.weatherCode)));
+    row.appendChild(makeCell(getWeatherState(rowData.weatherCode), "weatherCode"));
 
     if (blockerExists) row.classList.add("blocker-row");
     tableBody.appendChild(row);
