@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Info Display</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="currentTime"></div>
+
+<main>
+  <!-- Bus Section -->
+  <section id="bus-section">
+    <h2>🚍 Bus Schedule</h2>
+
+    <div id="north-bound-container">
+      <h3>Northbound - St Clair</h3>
+      <div id="nb-stClairStationAtLowerPlatform-nextbus"></div>
+      <table><tbody id="nb-stClairStationAtLowerPlatform-schedule"></tbody></table>
+
+      <h3>Northbound - Eglington</h3>
+      <div id="nb-mtPleasantRdAtEglintonAveEastNorthSide-nextbus"></div>
+      <table><tbody id="nb-mtPleasantRdAtEglintonAveEastNorthSide-schedule"></tbody></table>
+
+      <h3>Northbound - Home</h3>
+      <div id="nb-mtPleasantRdatBlythwoodRd-nextbus"></div>
+      <table><tbody id="nb-mtPleasantRdatBlythwoodRd-schedule"></tbody></table>
+    </div>
+
+    <div id="south-bound-container">
+      <h3>Southbound - Doncliffe Loop</h3>
+      <div id="sb-doncliffeLoopAtGlenEchoRd-nextbus"></div>
+      <table><tbody id="sb-doncliffeLoopAtGlenEchoRd-schedule"></tbody></table>
+
+      <h3>Southbound - Lawrence Ave</h3>
+      <div id="sb-mtPleasantRdAtLawrenceAveEastSouthSide-nextbus"></div>
+      <table><tbody id="sb-mtPleasantRdAtLawrenceAveEastSouthSide-schedule"></tbody></table>
+
+      <h3>Southbound - Home</h3>
+      <div id="sb-mtPleasantRdAtStibbardAve-nextbus"></div>
+      <table><tbody id="sb-mtPleasantRdAtStibbardAve-schedule"></tbody></table>
+    </div>
+  </section>
+
+  <!-- Weather Section -->
+  <section id="weather-section">
+    <h2>☀️ Weather</h2>
+
+    <h3>Today</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Time</th><th>Temp</th><th>Feels</th>
+        <th>Precip</th><th>Wind</th><th>Humidity</th>
+      </tr>
+      </thead>
+      <tbody id="today"></tbody>
+    </table>
+
+    <h3>Tomorrow</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Time</th><th>Temp</th><th>Feels</th>
+        <th>Precip</th><th>Wind</th><th>Humidity</th>
+      </tr>
+      </thead>
+      <tbody id="tomorrow"></tbody>
+    </table>
+  </section>
+</main>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

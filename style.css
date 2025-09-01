@@ -1,0 +1,90 @@
+/* Global Reset & Typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+body {
+  background: #0f1115;
+  color: #e9eef5;
+  line-height: 1.45;
+  padding: 20px;
+}
+h2 {
+  margin: 10px 0 8px;
+  font-size: 1.4rem;
+  color: #f5c518;
+}
+h3 {
+  margin: 10px 0 6px;
+  font-size: 1.05rem;
+  color: #aeb6c2;
+}
+
+/* Layout */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+section {
+  background: #151823;
+  border: 1px solid #23283a;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  overflow: auto;
+  max-height: 90vh;
+}
+#currentTime {
+  text-align: right;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #f5c518;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+thead th {
+  background: #1d2130;
+  color: #f5c518;
+  font-weight: 600;
+}
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #23283a;
+  text-align: center;
+}
+tr.blocker-row {
+  background: rgba(244, 67, 54, 0.16);
+}
+
+/* Weather classification colors */
+td.ideal { color: #4caf50; font-weight: 600; }
+td.acceptable { color: #ff9800; }
+td.blocker { color: #f44336; font-weight: 600; }
+
+/* Bus UI bits */
+#bus-section .minutes {
+  font-weight: 800;
+  padding: 0 6px;
+}
+#bus-section td.missed {
+  color: #e57373;
+  font-weight: 700;
+}
+#bus-section td.next {
+  color: #81c784;
+  font-weight: 700;
+}
+
+/* Responsive: stack on portrait iPad */
+@media (max-width: 1024px) {
+  main { grid-template-columns: 1fr; }
+}
