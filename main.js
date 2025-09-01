@@ -397,7 +397,7 @@ function getCurrentDay() {
 // Initial render + tick (your original interval behavior)
 refreshUi();
 setInterval(() => {
-  if (new Date().getSeconds() === 0 || new Date().getSeconds() === 30) {
+  if (new Date().getSeconds() === 0) {
     location.reload();
   }
 }, 1000);
