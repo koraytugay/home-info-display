@@ -400,4 +400,4 @@ setInterval(() => {
   if (new Date().getSeconds() === 0 || new Date().getSeconds() === 30) {
     refreshUi();
   }
-}, 250);
+}, 1000);
