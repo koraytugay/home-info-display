@@ -35,7 +35,7 @@ async function fetchWeather() {
       "forecast_days=2&latitude=43.70&longitude=-79.42" +
       "&hourly=temperature_2m,apparent_temperature,precipitation,precipitation_probability,relative_humidity_2m,windspeed_10m,cloudcover,uv_index,weather_code" +
       "&daily=temperature_2m_max,temperature_2m_min,sunrise" +
-      "&timezone=America%2FNew_York";
+      "&timezone=auto";
 
   const response = await fetch(url);
   const resp = await response.json();
