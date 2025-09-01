@@ -398,6 +398,6 @@ function getCurrentDay() {
 refreshUi();
 setInterval(() => {
   if (new Date().getSeconds() === 0 || new Date().getSeconds() === 30) {
-    refreshUi();
+    location.reload();
   }
 }, 1000);
