@@ -206,7 +206,7 @@ function fillWeatherTable(id, data) {
     row.appendChild(makeCell(`${rowData.wind}`, classify(rowData.wind, THRESHOLDS.wind)));
     row.appendChild(makeCell(getWeatherState(rowData.weatherCode), "weatherCode"));
 
-    if (blockerExists) row.classList.add("blocker-row");
+    // if (blockerExists) row.classList.add("blocker-row");
     tableBody.appendChild(row);
   });
 }
